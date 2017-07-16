@@ -24,16 +24,25 @@ const data = [
   alsoSee : [' fs.appendFile',' module']},
 
   {name: 'fs.appendFile',
-  tags: ['fs', 'module', 'file', 'system'],
-  description: `fs is one of inbuilt modules in NodeJS, it allows us to
-  access the file system on the local computer`,
-  alsoSee : [' fs.appendFile',' module']},
+  tags: ['append', 'module', 'file', 'system'],
+  description: `Using this function from the fs module, you can create simple
+  files, or amend existing ones. The first argument (string) is the name of
+  the file you want to append, the second (string) is the data you want to
+  add to that. the third is a callback function you can add  `,
+  alsoSee : [' fs',' module']},
 
   {name: 'OS',
   tags: ['os', 'module', 'operating', 'system'],
   description: `os is is one of inbuilt modules in NodeJS, it allows us to
   access the operating system information on the local computer`,
   alsoSee : [' os.userInfo',' module']},
+
+  {name: 'os.userInfo',
+  tags: ['user', 'module', 'operating', 'system', 'info'],
+  description: `By using this function from the os module you can access
+  certain properties about the user of the local system, such as their username
+  It doesn't require any arguments and will return an object with properties`,
+  alsoSee : [' os',' module']}
 ]
 
 let searchButton = document.querySelector('.searchButton')
