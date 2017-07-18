@@ -14,18 +14,26 @@ function search() {
     displayInfoDiv.removeChild(displayInfoDiv.lastChild);
   }
 
-  var searchTerms = searchValue.value.split(' ')
+let searchTerms =  searchValue.value.split(' ')
+let found = []
 
   searchTerms.forEach((searchItem) => {
     data.forEach((item) => {
       item.tags.forEach((tag) => {
+
         if (searchItem.toLowerCase() === tag.toLowerCase()) {
+          for (i = 0; i<found.length; i++){
+            if (found[i] === item.name) {
+              return;
+            }
+          }
 
           let mainResultDiv = document.createElement('div')
           mainResultDiv.setAttribute('class', 'main-result')
 
           let resultTitle = document.createElement('h3')
           resultTitle.innerText = item.name
+          found.push(item.name)
 
           let resultDesc = document.createElement('p')
           resultDesc.innerText = item.description
@@ -34,15 +42,25 @@ function search() {
           mainResultDiv.appendChild(resultDesc)
 
           let resultAlsoSee;
+          let alsoSeeEl;
           if (item.alsoSee) {
             resultAlsoSee = document.createElement('span')
             resultAlsoSee.setAttribute('class', 'also-see')
-            resultAlsoSee.innerText = `Also look at: ${item.alsoSee}`
+            resultAlsoSee.innerText = ' Also look at: '
             mainResultDiv.appendChild(resultAlsoSee)
+
+              item.alsoSee.forEach((alsoSeeItem)=>{
+                alsoSeeEl = document.createElement('span')
+                alsoSeeEl.innerHTML = '<a href="#">' + alsoSeeItem + '</a> '
+                alsoSeeEl.addEventListener('click', ()=>{
+                  searchValue.value = alsoSeeItem
+                  search()
+                })
+                resultAlsoSee.appendChild(alsoSeeEl)
+            })
           }
 
           displayInfoDiv.appendChild(mainResultDiv)
-
           return;
         }
       })
@@ -72,7 +90,7 @@ const data = [
   "alsoSee" : [" fs.appendFile"," module"]},
 
   {"name": "fs.appendFile",
-  "tags": ["append", "module", "file", "system"],
+  "tags": ["fs.appendFile", "module", "file", "append, ", "system"],
   "description": "Using this function from the fs module, you can create simple files, or amend existing ones. The first argument (string) is the name of the file you want to append, the second (string) is the data you want to add to that. the third is a callback function you can add",
   "alsoSee" : [" fs"," module"]},
 
@@ -82,7 +100,7 @@ const data = [
   "alsoSee" : [" os.userInfo"," module"]},
 
   {"name": "os.userInfo",
-  "tags": ["user", "module", "operating", "system", "info"],
-  "description": "By using this function from the os module you can access certain properties about the user of the local system, such as their username It doesn't require any arguments and will return an object with properties",
+  "tags": ["os.userInfo", "user", "module", "operating", "system", "info"],
+  "description": "By using this function from the os module you can access certain properties about the user of the local system, such as their username It doesn't require any arguments and will return an object with properties such as username",
   "alsoSee" : [" os"," module"]}
 ]
