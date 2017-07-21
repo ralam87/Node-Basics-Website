@@ -77,6 +77,15 @@ let found = []
 }
 
 const data = [
+  {"name" : "Object",
+  "tags" : ["object", "global", "window"],
+  "description" : "An Object is made commonly of { }, each property is seperated by a comma",
+  "example" : `var myObjectName = {
+    property1_KEY: "property1_VALUE",
+    property2_KEY: "property2_VALUE"
+  }`,
+  "alsoSee" : [" JSON", " "]},
+
   {"name" : "Global",
   "tags" : ["global", "window"],
   "description" : "Global is one of the main objects of NodeJS similar to what the window object is in the browser",
@@ -85,13 +94,19 @@ const data = [
   {"name" : "Process",
   "tags" : ["process", "document"],
   "description": "Process is one of the main objects of NodeJS similar to what the document object is in the browser",
-  "alsoSee" : [" global"]},
+  "alsoSee" : [" global", " argsv"]},
+
+  {"name" : "argsv",
+  "tags" : ["argsv", "process", "object", "arguments"],
+  "description": "argsv is a property on the process object that provides us access to any arguments that may have been passed into the program",
+  "example" : "process.argsv",
+  "alsoSee" : [" process", " arguments"]},
 
   {"name" : "Module",
   "tags" : ["module", "document"],
-  "description" : "A module is a function that has been seperated off from your script. It helps keep your script easier to read and easily reusable",
+  "description" : "A module is a function that has been seperated off from your script. It helps keep your script easier to read and easily reusable. There are three ways to use modules in Node: the inbuilt modules, your own (using module.exports) or using npm",
   "example" : "module.exports.yourFunctionName = yourFunctionName",
-  "alsoSee" : [" require", " fs", " os"]},
+  "alsoSee" : [" require", " fs", " os", " npm"]},
 
   {"name" : "Require",
   "tags" : ["require", "module"],
@@ -100,6 +115,43 @@ const data = [
 
               exampleName.foo() //does whatever foo does  `,
   "alsoSee" : [" module"]},
+
+  {"name" : "NPM",
+  "tags" : ["node", "module", "package", "manager", "npm"],
+  "description" : "NPM (originally for node package manager) allows the use of third party modules online. It is operated through the command line. You should create a log of what modules you use by first initalising a package.json file. So if anyone else wants to run your app, they can install the same modules you used",
+  "example" : `npm install //installs all modules listed in the package.json file
+
+  npm init //this creates a package.json file that keeps a record of your node modules you have used in your project
+
+  npm install >packageName here< //just installs package
+
+  npm install >packageName here< -g //g = global which means your package can be used everywhere, not just on current project environment
+
+  npm install >anotherPackageNameHere< --save //installs package and remembers to install it when your project is installed
+
+  npm install >yetAnotherPackageNameHere< --save-dev //same as above but only when your project is run in a developer environment`,
+  "alsoSee" : [" require"," module", " nodemon"]},
+
+  {"name" : "JSON",
+  "tags" : ["json", "object", "notation"],
+  "description" : "JS Object Notation is a data format for javascript, an alternative to XML, useful for transferring data between locations. One method commonly used is to turn your object into one long string, transfer it and then turn it back into the object it was originally",
+  "example" : `var test = JSON.stringify(myObject) //test will now be your object in string form
+
+  var test2 = JSON.parse(test) //test 2 will now be back in object form`,
+  "alsoSee" : [" object"]},
+
+
+
+  {"name" : "Nodemon",
+  "tags" : ["npm", "module", "nodemon"],
+  "description" : "Nodemon is a helpful command line utility module installed through npm that watches for any changes on a file and restarts the server when a change is detected, this saves the user having to run the same node command again to start their app",
+  "example" : "nodemon yourAppFile.js",
+  "alsoSee" : [" npm", " module"]},
+
+  {"name" : "Yargs",
+  "tags" : ["npm", "module", "yargs", "process", "arguments"],
+  "description" : "Yargs is another command line utility module that helps parse any arguments you pass into useful object notation. You could then use JSON.stringify to move this information around and then use JSON.parse to turn it back into an usable object",
+  "alsoSee" : [" npm", " module", " argv", " process", " JSON"]},
 
   {"name" : "FS",
   "tags" : ["fs", "module", "file", "system"],
