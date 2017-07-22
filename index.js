@@ -140,8 +140,6 @@ const data = [
   var test2 = JSON.parse(test) //test 2 will now be back in object form`,
   "alsoSee" : [" object"]},
 
-
-
   {"name" : "Nodemon",
   "tags" : ["npm", "module", "nodemon"],
   "description" : "Nodemon is a helpful command line utility module installed through npm that watches for any changes on a file and restarts the server when a change is detected, this saves the user having to run the same node command again to start their app",
