@@ -69,11 +69,16 @@ let found = []
           }
 
           displayInfoDiv.appendChild(mainResultDiv)
-          return;
+          return found;
         }
       })
     })
   })
+  if (!found.length) {
+      var noneFound = document.createElement('p')
+      noneFound.innerHTML = "No results: Please try different words"
+      displayInfoDiv.appendChild(noneFound)
+  }
 }
 
 const data = [
