@@ -113,6 +113,38 @@ const data = [
   "example" : "module.exports.yourFunctionName = yourFunctionName",
   "alsoSee" : [" require", " fs", " os", " npm"]},
 
+  {"name" : "http/https",
+  "tags" : ["module", "https", "http"],
+  "description" : "Inbuilt node module that allows you to create a server or make api requests",
+  "alsoSee" : [" .createServer", " get", " module", " request"]},
+
+  {"name" : "http.createServer()",
+  "tags" : ["createServer", "create", "server"],
+  "description" : "Method on the http/https module that allows you to create your own server",
+  "example" : `
+  const port = 3000;
+
+  const server = http.createServer((request, response) => {
+    //Do something with response
+  });
+
+  server.listen(port, () => {
+    console.log('Server running at localhost:/$\{port}/');
+  });
+  `,
+  "alsoSee" : [ " get", " module", " request", " http"]},
+
+  {"name" : "http.get()",
+  "tags" : ["http", "get", "API", "call"],
+  "description" : "A method on the http/https module that allows to make API requests to retrieve information, it accepts two arguments, the URL and the callback function which provides a response variable as an argument",
+  "example" : `
+    http.get("www.yourUrlHere", (response) => {
+      //Do something with response
+    })
+
+  `,
+  "alsoSee" : [" http", " createServer", " module"]},
+
   {"name" : "Require",
   "tags" : ["require", "module"],
   "description" : "Require is a function that allows us to split our javascript into modules, we use it in a script where we want to import a module so we can use it within that script. You save the function call as a variable and then you can use that variable name as access to that module and it's properties",
@@ -145,6 +177,27 @@ const data = [
   var test2 = JSON.parse(test) //test 2 will now be back in object form`,
   "alsoSee" : [" object"]},
 
+  {"name" : "request",
+  "tags" : ["npm", "module", "request"],
+  "description" : "Request is a simplified 3rd party version of the inbuilt modules http/https. It used to make API requests. It takes an object which has all the options for your request including the URL, and then a callback function which returns always 'error, response, body'",
+  "example" : `
+  const reqOptions = {
+    url: "https://maps.googleapis.com/maps/api/geocode/json?address=10%20Bell%20Lane",
+    json: true
+  }
+
+  request(reqOptions ,
+    (error, response, body) => {
+      if (error) {
+        console.log(error.code)
+      } else {
+        //Do something
+      }
+  })
+
+  `,
+  "alsoSee" : [" https", " http", " module"]},
+
   {"name" : "Nodemon",
   "tags" : ["npm", "module", "nodemon"],
   "description" : "Nodemon is a helpful command line utility module installed through npm that watches for any changes on a file and restarts the server when a change is detected, this saves the user having to run the same node command again to start their app",
@@ -156,10 +209,43 @@ const data = [
   "description" : "Yargs is another command line utility module that helps parse any arguments you pass into useful object notation. You could then use JSON.stringify to move this information around and then use JSON.parse to turn it back into an usable object",
   "alsoSee" : [" npm", " module", " argv", " process", " JSON"]},
 
+  {"name" : "yargs.help()",
+  "tags" : ["npm", "module", "yargs", "help"],
+  "description" : "This function will add the command to the --help flag which helps provide the user with information about the commands that are avaiable in your app. There are no arguments required for this",
+  "alsoSee" : [" yargs", " module", " argv", " JSON"]},
+
+  {"name" : "yargs.command()",
+  "tags" : ["npm", "module", "yargs", "command"],
+  "description" : "By using this function you can justify the options for any arguments you pass for your app. It accepts 3 arguments. The argument/command word that will target. This will be the word that the user inputs when running the app. Then a description of that command. Then an option object which itself can include, describe (description), demand (required?) and alias. Any arguments you pass along with your command word you choose an alternate flag",
+  "example" : `
+    const titleOptions = {
+    describe: 'The title of the note',
+    demand: true,
+    alias : 't'
+  }
+  .command('read', 'Read a note', {
+    title: titleOptions
+  })
+
+  `,
+  "alsoSee" : [" yargs", " module", " argv", " JSON"]},
+
   {"name" : "FS",
   "tags" : ["fs", "module", "file", "system"],
   "description" : "fs is one of inbuilt modules in NodeJS, it allows us to access the file system on the local computer",
   "alsoSee" : [" fs.appendFile"," module"]},
+
+  {"name" : "encodeURICompnent() ",
+  "tags" : ["encode", "encodeURIComponent", "URI", "URL", "http", "https"],
+  "description" : "encodeURICompnent is a very useful method that will transform any text into a URI coded string that we can use for URL requests",
+  "example" : "encodeURICompnent('10 Bell Lane') //10%20Bell%20Lane",
+  "alsoSee" : [" decodeURIComponent"," get", "http"]},
+
+  {"name" : "decodeURIComponent() ",
+  "tags" : ["decode", "decodeURIComponent", "URI", "URL", "http", "https"],
+  "description" : "decodeURICompnent does the opposite of what encodeURICompnent does",
+  "example" : "decodeURICompnent('10%20Bell%20Lane') //10 Bell Lane",
+  "alsoSee" : [" encodeURIComponent"," get", "http"]},
 
   {"name" : "fs.appendFile",
   "tags" : ["fs.appendFile", "module", "file", "append, ", "system"],
