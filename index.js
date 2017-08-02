@@ -107,6 +107,41 @@ const data = [
   "example" : "process.argsv",
   "alsoSee" : [" process", " arguments"]},
 
+  {"name" : "Promises",
+  "tags" : ["promises", "promise", "async", "callback"],
+  "description": "Promises are similar to if else statements but they work with asynchoronus data. It provides 1 callback argument, which provides 2 arguments, resolve and reject which can be called when certain conditions are met, until then, the promise is kept in a 'pend' status. A resolve/reject statement can only be called once in the promise. After that a new promise object has to be created",
+  "example" : `return new Promise((resolve, reject) => {
+      if (someCondition === 'met') {
+        resolve('You can pass data through here, even objects')
+      } else {
+        reject('You can pass data through here, even objects')
+      }
+  })
+
+  //Once resolve or reject is called further actions can be taken with then or catch functions
+  `,
+  "alsoSee" : [" catch", " then"]},
+
+  {"name" : ".then()",
+  "tags" : ["promise", "async", "promises", "then"],
+  "description" : "If a promise has been resolved, using the then function we can take further action. It provides us with 2 callback arguments, one for resolve and one for reject",
+  "example" : `
+  myAsyncFunction().then(
+    (success) => {console.log(success)
+    },
+    (error)=>{console.log(error)}
+  )`,
+  "alsoSee" : [" promise", " catch"]},
+
+  {"name" : ".catch()",
+  "tags" : ["promise", "async", "promises", "catch"],
+  "description" : "If a promise has been rejected, using the catch function we can take further action. It provides us with a callback argument for errors. This could be useful if you decide to use chaining on your promises where you provide only a resolve callback with a .then function.",
+  "example" : `
+  myAsyncFunction().catch(
+    (error) => {console.log(error)}
+  )`,
+  "alsoSee" : [" promise", " then"]},
+
   {"name" : "Module",
   "tags" : ["module", "document"],
   "description" : "A module is a function that has been seperated off from your script. It helps keep your script easier to read and easily reusable. There are three ways to use modules in Node: the inbuilt modules, your own (using module.exports) or using npm",
@@ -116,7 +151,7 @@ const data = [
   {"name" : "http/https",
   "tags" : ["module", "https", "http"],
   "description" : "Inbuilt node module that allows you to create a server or make api requests",
-  "alsoSee" : [" .createServer", " get", " module", " request"]},
+  "alsoSee" : [" createServer", " get", " module", " request"]},
 
   {"name" : "http.createServer()",
   "tags" : ["createServer", "create", "server"],
@@ -209,14 +244,37 @@ const data = [
   "description" : "Yargs is another command line utility module that helps parse any arguments you pass into useful object notation. You could then use JSON.stringify to move this information around and then use JSON.parse to turn it back into an usable object",
   "alsoSee" : [" npm", " module", " argv", " process", " JSON"]},
 
+  {"name" : "yargs.options()",
+  "tags" : ["command", "yargs", "options"],
+  "description" : "Similar to .command(), this will allow you to add options to any arguments (which accept input) you want to allow for your app",
+  "example" : `
+  const aOptions = {
+    demand : true,
+    alias : "address",
+    describe : "Address to fetch weather for",
+    string : true
+  }
+
+  const argv = yargs
+    .options({
+      a : aOptions
+    )}
+
+  //the address argument can be accessed with yargs.address
+  //It would be used as: node.app.js -a="fake address here"
+  //OR : node.app.js --address="fake address here"
+
+  `,
+  "alsoSee" : [" yargs", " module", " argv", " JSON"]},
+
   {"name" : "yargs.help()",
-  "tags" : ["npm", "module", "yargs", "help"],
+  "tags" : ["command", "yargs", "help"],
   "description" : "This function will add the command to the --help flag which helps provide the user with information about the commands that are avaiable in your app. There are no arguments required for this",
   "alsoSee" : [" yargs", " module", " argv", " JSON"]},
 
   {"name" : "yargs.command()",
   "tags" : ["npm", "module", "yargs", "command"],
-  "description" : "By using this function you can justify the options for any arguments you pass for your app. It accepts 3 arguments. The argument/command word that will target. This will be the word that the user inputs when running the app. Then a description of that command. Then an option object which itself can include, describe (description), demand (required?) and alias. Any arguments you pass along with your command word you choose an alternate flag",
+  "description" : "By using this function you can justify the options for any one word arguments you pass for your app. It accepts 3 arguments. The argument/command word that will target. This will be the word that the user inputs when running the app. Then a description of that command. Then an option object which itself can include, describe (description), demand (required?) and alias. Any arguments you pass along with your command word you choose an alternate flag",
   "example" : `
     const titleOptions = {
     describe: 'The title of the note',
