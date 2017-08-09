@@ -322,5 +322,56 @@ const data = [
   "example" : `const user = os.userInfo()
 
               console.log(user.username) //prints username of local computer`,
-  "alsoSee" : [" os"," module"]}
+  "alsoSee" : [" os"," module"]},
+
+  {"name" : "express",
+  "tags" : ["express", "framework", "node", "server" ],
+  "description" : "express is another npm module, it makes creating a server and serving files easier and quicker. It has access to tons of middleware which allow it to specialise in a certain task whether it's displaying a webpage or dealing with API's",
+  "alsoSee" : [" handlebars", " partials", " views", " registerHelper"]},
+
+  {"name" : "handlebars (HBS)",
+  "tags" : ["module", "template", "templating", "engine", "hbs", "handlebars" ],
+  "description" : "Handlebars is a templating engine that is used by expressJS. It provides a more convenient way for your express server to serve HTML. You can install it via npm. There are other templating engines you can use such as pug",
+  "example" : `
+  //setting the express engine for hbs
+  app.set('view-engine', 'hbs')
+  
+  //setting the express engine for pug
+  app.set('view-engine', 'pug')
+  `,
+  "alsoSee" : [" express", " partials", " views", " registerHelper", "registerPartials"]},
+
+  {"name" : "views",
+  "tags" : ["express", "handlebars", "templates", "templating" ],
+  "description" : "views/templates which hare hbs files that contain html and other templating elements such as partials. ",
+  "alsoSee" : [" handlebars", " partials", " registerPartials", " registerHelper"]},
+
+    {"name" : "partials",
+  "tags" : ["partials", "handlebars", "template", "views" ],
+  "description" : "Partials are part of the handlebars module. It's a name given to a section of HTML that want to reuse over and over again throughout your website. Commonly headers and footers have partials and then can be referenced in your templates/views with the use of '{{> yourPartialName}} '. They are stored in files with the extension of .hbs",
+  "example" : `
+  //within footer.hbs
+  <footer>
+    <p>Created by Ruhull Alam Copyright 2017</p>
+  </footer
+
+  //within oneOfYourTemplates.hbs
+  {{> footer}}
+
+  `,
+  "alsoSee" : [" handlebars", " partials", " views", " registerHelper", "registerPartials"]},
+
+  {"name" : "hbs.registerPartials()",
+  "tags" : ["registerPartials", "partials",  "handlebars", "templates", "templating", "register"],
+  "description" : "registerPartials() is a function within the handlebars module. It takes one argument which is a directory route to establish where handlebars should look for partials. If you use '__dirname' it will always point to the directory where the file you are using the function is.",
+  "example" : `hbs.registerPartials(__dirname + '/views/partials')`,
+  "alsoSee" : [" handlebars", " partials", " registerHelper"]},
+
+  {"name" : "hbs.registerHelper()",
+  "tags" : ["helper", "registerHelper", "handlebars", "templates", "templating", "register"],
+  "description" : "registerHelper is a way to add functions into your views. This allows dynamic information to be displayed. It takes two arguments, the name (string) of the helper, and then a function as to what it does. You can then reference the helper by using the name you gave it and placing it between {{ here }} in your views/templates",
+  "example" : `hbs.registerHelper('getCurrentYear', () => {
+    return new Date().getFullYear()
+  })`,
+  "alsoSee" : [" handlebars", " partials", " registerPartials"]},
 ]
