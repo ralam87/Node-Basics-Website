@@ -22,7 +22,7 @@ let found = []
       item.tags.forEach((tag) => {
         if (searchItem.toLowerCase() === tag.toLowerCase()) {
 
-          for (i = 0; i<found.length; i++){
+          for (i = 0; i < found.length; i++){
             if (found[i] === item.name) {
               return;
             }
@@ -329,13 +329,18 @@ const data = [
   "description" : "express is another npm module, it makes creating a server and serving files easier and quicker. It has access to tons of middleware which allow it to specialise in a certain task whether it's displaying a webpage or dealing with API's",
   "alsoSee" : [" handlebars", " partials", " views", " registerHelper"]},
 
+  {"name" : ".use()",
+  "tags" : ["express", "middleware", "use"],
+  "description" : "If you want to register middleware with express, the use() function is required. It takes only one argument, which should be a function",
+  "alsoSee" : [" express"},
+
   {"name" : "handlebars (HBS)",
   "tags" : ["module", "template", "templating", "engine", "hbs", "handlebars" ],
   "description" : "Handlebars is a templating engine that is used by expressJS. It provides a more convenient way for your express server to serve HTML. You can install it via npm. There are other templating engines you can use such as pug",
   "example" : `
   //setting the express engine for hbs
   app.set('view-engine', 'hbs')
-  
+
   //setting the express engine for pug
   app.set('view-engine', 'pug')
   `,
@@ -346,7 +351,7 @@ const data = [
   "description" : "views/templates which hare hbs files that contain html and other templating elements such as partials. ",
   "alsoSee" : [" handlebars", " partials", " registerPartials", " registerHelper"]},
 
-    {"name" : "partials",
+  {"name" : "partials",
   "tags" : ["partials", "handlebars", "template", "views" ],
   "description" : "Partials are part of the handlebars module. It's a name given to a section of HTML that want to reuse over and over again throughout your website. Commonly headers and footers have partials and then can be referenced in your templates/views with the use of '{{> yourPartialName}} '. They are stored in files with the extension of .hbs",
   "example" : `
