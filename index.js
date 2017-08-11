@@ -306,8 +306,8 @@ const data = [
   "alsoSee" : [" encodeURIComponent"," get", "http"]},
 
   {"name" : "fs.appendFile",
-  "tags" : ["fs.appendFile", "module", "file", "append, ", "system"],
-  "description" : "Using this function from the fs module, you can create simple files, or amend existing ones. The first argument (string) is the name of the file you want to append, the second (string) is the data you want to add to that. the third is a callback function you can add",
+  "tags" : ["fs.appendFile", "module", "file", "append", "system"],
+  "description" : "Using this function from the fs module, you can create simple files, or amend existing ones. The first argument (string) is the name of the file you want to append, the second (string) is the data you want to add to that. the third is a callback function you need to add for error handling",
   "example" : "fs.appendFile('yourChosenFileName.txt', 'Words and Strings Data Here', 'yourCallBackFunction')",
   "alsoSee" : [" fs"," module"]},
 
@@ -327,12 +327,24 @@ const data = [
   {"name" : "express",
   "tags" : ["express", "framework", "node", "server" ],
   "description" : "express is another npm module, it makes creating a server and serving files easier and quicker. It has access to tons of middleware which allow it to specialise in a certain task whether it's displaying a webpage or dealing with API's",
-  "alsoSee" : [" handlebars", " partials", " views", " registerHelper"]},
+  "alsoSee" : [" handlebars", " partials", " views", " registerHelper"," middleware"]},
+
+  {"name" : "middleware",
+  "tags" : ["express", "framework", "middleware" ],
+  "description" : "middleware is code that express can use to alter it's behaviour and make it do different things. It takes three arguments, the same request and response object that you may find with a http.get method as well as a third argument, next(). If you don't use next() the middleware will hang and not move on. It's useful when dealing with asynchoronus functions",
+  "example" : `
+  app.use((req, res, next) => {
+    //your code here
+    next()
+  })
+  `
+  "alsoSee" : [" express"]},
 
   {"name" : ".use()",
   "tags" : ["express", "middleware", "use"],
   "description" : "If you want to register middleware with express, the use() function is required. It takes only one argument, which should be a function",
-  "alsoSee" : [" express"},
+  "alsoSee" : [" express"]
+  },
 
   {"name" : "handlebars (HBS)",
   "tags" : ["module", "template", "templating", "engine", "hbs", "handlebars" ],
